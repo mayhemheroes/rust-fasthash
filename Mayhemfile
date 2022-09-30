@@ -1,0 +1,5 @@
+project: rust-fasthash
+target: fasthash-fuzz
+
+cmds:
+    - cmd: ./fasthash-fuzz @@
