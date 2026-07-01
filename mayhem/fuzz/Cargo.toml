@@ -1,0 +1,30 @@
+# Additive Mayhem cargo-fuzz crate (libfuzzer-sys). Leaves upstream fuzz/ untouched.
+# Mirrors the upstream fuzz/src/main.rs dispatch logic under a libFuzzer harness so
+# Mayhem drives it as a real libFuzzer target (upstream's fuzz/ is a plain file-arg
+# binary, not a libfuzzer-sys target — hence this additive crate per port-rust).
+[package]
+name = "fasthash-mayhem-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+
+[dependencies.fasthash]
+path = "../../fasthash"
+
+[dependencies.fasthash-sys]
+path = "../../fasthash-sys"
+
+# Prevent this crate from being pulled into the workspace at the repo root.
+[workspace]
+
+[[bin]]
+name = "fasthash-fuzz"
+path = "fuzz_targets/main.rs"
+test = false
+doc = false

@@ -1,0 +1,8 @@
+# Mayhem target for rust-fasthash. libFuzzer binary built by mayhem/build.sh from the
+# additive mayhem/fuzz/ cargo-fuzz crate. Preserves the original target name.
+project: rust-fasthash
+target: fasthash-fuzz
+
+cmds:
+  - cmd: /mayhem/fasthash-fuzz
+    libfuzzer: true
